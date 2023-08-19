@@ -1,10 +1,16 @@
-def chess_knight_move(coords):
+"""Can knight move in chess YES or NO"""
 
+
+import sys
+
+
+def chess_knight_move(coords: str) -> str:
+    """Chess knight moves"""
     try:
         numlst = coords.split('-')
-    except:
+    except TypeError:
         print('ERROR')
-        exit()
+        sys.exit(1)
 
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8']
     letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
@@ -16,9 +22,9 @@ def chess_knight_move(coords):
 
             li2 = letters.index(numlst[1][0])
             ni2 = numbers.index(numlst[1][1])
-        except:
+        except ValueError:
             print("ERROR")
-            exit()
+            sys.exit(1)
 
         if letters[li1-2] == letters[li2] and numbers[ni1-1] == numbers[ni2]:
             print("YES")
@@ -38,3 +44,7 @@ def chess_knight_move(coords):
             print("YES")
         else:
             print("NO")
+
+
+if __name__ == "main":
+    print(chess_knight_move("2 6 8"))
